@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.andres.hibernate.asierTarea5.models">
+
+	<class name="Doctor" table="doctor">
+		<id name="id" column="iddoctor">
+			<generator class="identity" />
+		</id>
+		<property name="name" />
+		<property name="area" />
+
+		<list name="patients" table="doctors_patients" cascade="all"
+			lazy="false">
+			<key column="iddoctor" />
+			<list-index column="list_order" />
+			<many-to-many class="Patient" column="idpatient" />
+		</list>
+	</class>
+
+</hibernate-mapping>
